@@ -1,7 +1,7 @@
 <template>
   <div>
     <Navbar/>
-    <section class="bg-white container mx-auto mt-2">
+    <section class="bg-white container mx-auto mt-2 main-content">
       <router-view/>
     </section>
     <Footer/>
