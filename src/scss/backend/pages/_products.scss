@@ -1,0 +1,12 @@
+
+.main-content {
+  .product-nav {
+    position : sticky;
+    top      : 48px;
+    z-index: 999;
+
+    .search-div{
+      background-color: $light-color;
+    }
+  }
+}
