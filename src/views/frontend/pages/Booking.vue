@@ -108,6 +108,7 @@ export default {
         this.room = res.data.data;
       }).catch(error => {
         NotificationService.error(error.response.data.message);
+        this.$router.push({name: "home"});
       })
     },
     loginFirst() {
