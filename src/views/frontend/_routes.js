@@ -15,7 +15,7 @@ const FrontendRoutes = [
             title: 'About'
         }
     }, {
-        path     : '/booking-now/:roomId',
+        path     : '/booking/:uuid',
         name     : 'bookingNow',
         component: () => import('./pages/Booking.vue'),
         meta     : {

@@ -102,7 +102,7 @@ export default {
           JwtService.destroyToken();
           this.$store.commit("GETUSER", {});
           NotificationService.success(res.data.message);
-          this.$router.push({name: "userLogin"});
+          this.$router.push({name: "home"});
         }).catch(error => {
           NotificationService.error(error.response.data.message);
         })

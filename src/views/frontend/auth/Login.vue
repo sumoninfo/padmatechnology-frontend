@@ -84,9 +84,9 @@ export default {
         localStorage.setItem("expires_at", res.data.expires_at);
         ApiService.init();
         NotificationService.success(res.data.message);
-        if (localStorage.getItem('redirect_to_cart') == 'yes') {
-          localStorage.removeItem('redirect_to_cart')
-          this.$router.push({name: "cartPage"});
+        if (localStorage.getItem('redirect_values')) {
+          let values = JSON.parse(localStorage.getItem('redirect_values'))
+          this.$router.push({'name': 'bookingNow', params: {uuid: values.uuid}});
         } else {
           this.$router.push({name: "userDashboard"});
         }

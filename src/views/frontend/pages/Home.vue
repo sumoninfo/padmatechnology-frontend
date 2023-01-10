@@ -36,7 +36,7 @@
       <template v-if="rooms.length">
         <div v-for="(room, index) in rooms" :key="index" class="w-full md:w-1/2 p-6 flex flex-col shadow-lg">
           <RoomComponent :room="room"/>
-          <button @click="bookingNow(room)"
+          <button @click="bookingNow(room.uuid)"
                   class="w-11/12 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
             Booking
           </button>
@@ -74,8 +74,8 @@ export default {
     this.getRooms()
   },
   methods: {
-    bookingNow(room) {
-      this.$router.push({'name': 'bookingNow', params: {roomId: room.id}});
+    bookingNow(uuid) {
+      this.$router.push({'name': 'bookingNow', params: {uuid: uuid}});
     },
     getRooms() {
       this.$Progress.start();

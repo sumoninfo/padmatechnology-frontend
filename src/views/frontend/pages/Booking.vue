@@ -67,11 +67,10 @@
 </template>
 
 <script>
-import {mapGetters, mapState} from "vuex";
-import ApiService             from "@/services/api.service";
-import NotificationService    from "@/services/notification.service";
-import * as JwtService        from "@/services//jwt.service";
-import RoomComponent          from "@/components/RoomComponent.vue";
+import ApiService          from "@/services/api.service";
+import NotificationService from "@/services/notification.service";
+import * as JwtService     from "@/services//jwt.service";
+import RoomComponent       from "@/components/RoomComponent.vue";
 
 export default {
   name      : "Cart",
@@ -96,21 +95,27 @@ export default {
   mounted() {
     this.user_logged = JwtService.getLoggedUser() == 'user' ? true : false;
 
-    if (this.$route.params.roomId) {
-      console.log(this.$route.params.roomId, 'this.$route.params.roomId')
-      this.getRoom(this.$route.params.roomId);
+    if (this.$route.params.uuid) {
+      this.getRoom(this.$route.params.uuid);
+    }
+    if (localStorage.getItem('redirect_values')) {
+      this.form = JSON.parse(localStorage.getItem('redirect_values'));
     }
   },
   methods: {
-    getRoom(roomId) {
-      ApiService.get(`/room/${roomId}`).then(res => {
+    getRoom(uuid) {
+      ApiService.get(`/room/${uuid}`).then(res => {
         this.room = res.data.data;
       }).catch(error => {
         NotificationService.error(error.response.data.message);
       })
     },
     loginFirst() {
-      localStorage.setItem('redirect_to_cart', 'yes');
+      let values = {
+        ...this.form,
+        uuid: this.$route.params.uuid,
+      }
+      localStorage.setItem('redirect_values', JSON.stringify(values));
       this.$router.push({name: 'userLogin'})
     },
     orderSubmit() {
@@ -131,6 +136,7 @@ export default {
           ApiService.post(`/user/bookings`, form).then(res => {
             this.$router.push({name: "userDashboard"});
             NotificationService.success(res.data.message);
+            localStorage.removeItem('redirect_values')
           }).catch(error => {
             NotificationService.error(error.response.data.message);
           })
