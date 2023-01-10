@@ -5,7 +5,7 @@
         <div class="flex justify-between p-4">
           <div>
             <h1 class="text-xl italic font-extrabold tracking-widest text-indigo-500">Hotel Reservation System</h1>
-            <p class="text-base">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+            <p class="text-base">Subtitle </p>
           </div>
           <div class="p-2">
             <ul class="flex">
@@ -33,7 +33,9 @@
         <div class="w-full h-0.5 bg-indigo-500 border"></div>
         <div class="flex justify-between p-4">
           <div>
-            <h6 class="font-bold">Booking Date : <span class="text-sm font-medium"> {{ booking.date | dateFormat }}</span>
+            <h6 class="font-bold">Booking Date : <span class="text-sm font-medium"> {{
+                booking.date | dateFormat
+              }}</span>
             </h6>
             <h6 class="font-bold">Booking No : <span class="text-sm font-medium"> {{ booking.booking_no }}</span>
             </h6>
@@ -115,7 +117,7 @@
 
         <div class="p-4">
           <div class="flex items-center justify-center">
-            Thank you very much for doing business with us.
+            Thank you very much for your booking
           </div>
         </div>
 
@@ -128,7 +130,7 @@
 import RoomComponent from "@/components/RoomComponent.vue";
 
 export default {
-  name : "BookingDetailsShow",
+  name: "BookingDetailsShow",
   components: {RoomComponent},
   props: ['booking']
 }

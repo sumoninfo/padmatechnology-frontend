@@ -6,6 +6,10 @@
 
     git clone https://github.com/sumoninfo/padmatechnology-frontend.git
 
+### Switch to the repo folder
+
+    cd padmatechnology-frontend
+
 ### Copy the example env file and make the required configuration changes in the .env file
 
     cp .env.example .env
