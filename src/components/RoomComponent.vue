@@ -10,7 +10,7 @@
         <div class="signpost-description">
           <div class="feature">
             <i class="fa fa-arrows-alt"></i>
-            <strong> Room Size:</strong><span> {{ room.size }} // 28sqm (302sq-ft)</span>
+            <strong> Room Size:</strong><span> {{ room.size }}</span>
           </div>
         </div>
         <div class="text component my-2">

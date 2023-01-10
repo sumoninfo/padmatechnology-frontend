@@ -22,7 +22,7 @@
       <div class="flex justify-between mt-2 mb-5">
         <span class="font-semibold text-sm">Sub Total: {{ room.price |numberFormat }}</span>
       </div>
-      <form @submit.prevent="orderSubmit">
+      <form @submit.prevent="bookingSubmit">
         <div class="border-t pb-2">
           <label class=" font-medium inline-block mb-3 text-sm uppercase">Check In</label>
           <input required v-model="form.check_in" class="block p-2 text-gray-600 w-full text-sm" type="datetime-local">
@@ -54,7 +54,7 @@
           </div>
           <button v-if="user_logged" type="submit"
                   class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
-            Checkout & Place an order
+            Checkout & Place an booking
           </button>
           <button @click="loginFirst()" v-else type="button"
                   class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">
@@ -119,7 +119,7 @@ export default {
       localStorage.setItem('redirect_values', JSON.stringify(values));
       this.$router.push({name: 'userLogin'})
     },
-    orderSubmit() {
+    bookingSubmit() {
       Swal.fire({
         title             : 'Are you sure confirm your booking?',
         text              : "Do you want to confirm your booking?",

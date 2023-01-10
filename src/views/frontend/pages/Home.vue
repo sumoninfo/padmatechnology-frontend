@@ -10,7 +10,7 @@
           </a>
           <div class="flex items-center" id="store-nav-content">
             <a class="pl-3 inline-block no-underline hover:text-black mr-1" href="#">
-              <select v-model="form.sort_by" @change="getRooms()"
+              <select v-model="form.sort_by" @change="getLists()"
                       class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline">
                 <option value="">Sort By</option>
                 <option value="ASC">Price low to high</option>
@@ -18,7 +18,7 @@
               </select>
             </a>
             <div class="flex flex-col md:flex-row">
-              <form @submit.prevent="getRooms()" class="w-full float-right max-w-sm">
+              <form @submit.prevent="getLists()" class="w-full float-right max-w-sm">
                 <div class="flex items-center border border-teal-500">
                   <input type="text" placeholder="Search..." v-model="form.search" autocomplete="off"
                          class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none">
@@ -46,7 +46,7 @@
         <div class="text-center font-bold w-full pt-5 h-20">No Room found</div>
       </template>
     </div>
-    <pagination v-if="rooms.length>0" :pagination="pagination" @paginate="getRooms()" :offset="5"/>
+    <pagination v-if="rooms.length>0" :pagination="pagination" @paginate="getLists()" :offset="5"/>
   </section>
 </template>
 
@@ -64,20 +64,20 @@ export default {
       current_page: 1,
     },
     form      : {
-      per_page: 12,
+      per_page: 10,
       search  : '',
       sort_by : '',
     },
     rooms     : [],
   }),
   mounted() {
-    this.getRooms()
+    this.getLists()
   },
   methods: {
     bookingNow(uuid) {
       this.$router.push({'name': 'bookingNow', params: {uuid: uuid}});
     },
-    getRooms() {
+    getLists() {
       this.$Progress.start();
       let params = {
         per_page: this.form.per_page,

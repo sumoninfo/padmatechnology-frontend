@@ -2,12 +2,13 @@
   <nav class="flex justify-around m-5" aria-label="...">
     <div class="show">
       <select v-model="$parent.form.per_page" @change="$parent.getLists()" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-        <option value="12">12</option>
+        <option value="10">10</option>
         <option value="15">15</option>
         <option value="25">25</option>
         <option value="50">50</option>
         <option value="100">100</option>
         <option value="500">500</option>
+        <option value="">All</option>
       </select>
     </div>
     <div class="show">
