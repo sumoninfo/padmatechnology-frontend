@@ -1,7 +1,7 @@
 <template>
   <div>
     <a href="javascript:void(0)">
-      <img class="hover:grow hover:shadow-lg" style="height: 272px;" :src="room.image"
+      <img class="hover:grow hover:shadow-lg mx-auto" style="height: 272px;" :src="room.image"
            :alt="room.name">
     </a>
     <div class="pt-3">
